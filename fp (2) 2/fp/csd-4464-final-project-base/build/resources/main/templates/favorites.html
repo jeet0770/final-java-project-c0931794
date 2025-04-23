@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Favorite Movies</title>
+</head>
+<body style="font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4;">
+    <h1 style="color: #2c3e50;">Favorite Movies</h1>
+    <div th:each="movie : ${favorites}" style="margin-bottom: 20px; background: #ffffff; padding: 15px; border-radius: 6px;">
+        <img th:src="${movie.posterUrl}" width="100" style="border-radius: 5px;">
+        <h3 th:text="${movie.title}" style="margin: 10px 0;"></h3>
+        <a th:href="@{/movie/{id}(id=${movie.id})}" style="color: #2980b9;">View Details</a>
+        <hr style="border: none; border-top: 1px solid #ddd;">
+    </div>
+    <a href="/" style="display: inline-block; margin-top: 20px; color: #34495e;">Back to Home</a>
+</body>
+</html>

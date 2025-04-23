@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Movie Catalogue</title>
+</head>
+<body style="font-family: Arial, sans-serif; padding: 20px; background-color: #f9f9f9;">
+    <h1 style="color: #2c3e50;">Popular/Search Movies</h1>
+    <div>
+        <a href="/favorites" style="display: inline-block; margin-top: 5px; margin-bottom: 5px; color: #34495e;">My Favorites</a>
+    </div>
+    <form action="/search" method="get" style="margin-bottom: 20px;">
+        <input type="text" name="query" placeholder="Search movies" style="padding: 8px; width: 300px;">
+        <button type="submit" style="padding: 8px 12px;">Search</button>
+    </form>
+    <div th:each="movie : ${movies}" style="margin-bottom: 30px; background: #fff; padding: 15px; border-radius: 5px;">
+        <img th:src="${movie.posterUrl}" width="100" style="border-radius: 5px;">
+        <h3 th:text="${movie.title}" style="margin: 10px 0 5px;"></h3>
+        <p th:text="${movie.release_date}" style="color: #777;"></p>
+        <a th:href="@{/movie/{id}(id=${movie.id})}" style="color: #3498db;">View Details</a>
+    </div>
+</body>
+</html>
